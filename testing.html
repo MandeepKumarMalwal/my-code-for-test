@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4; /* Light gray background */
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        header {
+            background: #1a237e; /* Dark blue background */
+            color: #fff; /* White text color */
+            padding: 20px;
+        }
+
+        .feature {
+            background: #e3f2fd; /* Light blue background */
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 1000;
+            overflow: hidden;
+            animation: popupFadeIn 0.5s ease forwards;
+        }
+
+        @keyframes popupFadeIn {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .popup {
+            background: #fff;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            position: relative; /* Required for absolute positioning inside */
+        }
+
+        .popup h3 {
+            margin-top: 0;
+            color: #1a237e; /* Dark blue text */
+        }
+
+        .popup label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .add-option-button, .selected {
+            display: block;
+            margin-top: 10px;
+            background-color: #1a237e; /* Dark blue background */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .add-option-button:hover, .selected:hover {
+            background-color: #0d47a1; /* Darker shade of blue on hover */
+        }
+
+        .custom-option-input {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .custom-option-input input[type="text"] {
+            width: calc(100% - 16px); /* Adjust for padding */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .custom-option-input button {
+            display: block;
+            width: 100%;
+            background-color: #1a237e; /* Dark blue background */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 8px 0;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-option-input button:hover {
+            background-color: #0d47a1; /* Darker shade of blue on hover */
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #aaa;
+        }
+
+        .popup-close:hover {
+            color: #666;
+        }
+
+        .footer {
+            background: #1a237e; /* Dark blue background */
+            color: #fff; /* White text color */
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .selected {
+        background-color: #fff !important; /* White background for selected buttons */
+        color: #1a237e !important; /* Dark blue text color for selected buttons */
+    }
+    .container-buttons{
+        display: flex;
+    }
+    .iner-container{
+        width: 40%;
+    }
+    .flow-searchunify{
+        width: 60%;
+        padding: 20px;
+    }
+    .logo-flow{
+        padding: 20px;
+    width: 80%;
+    background: #ffff;
+    height: 500px;
+    }
+    .button-css{
+        background-color: #1a237e;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to Serachunify</h1>
+        </header>
+        <div class="container-buttons">
+            <div class="iner-container">
+        <section class="feature" id="feature1" onclick="togglePopup('popup1')">
+            <h2>Content Source</h2>
+        </section>
+        <section class="feature" id="feature2" onclick="togglePopup('popup2')">
+            <h2>Search Clinet</h2>
+        </section>
+        <section class="feature" id="feature3" onclick="togglePopup('popup3')">
+            <h2>Applications</h2>
+        </section>
+    </div>
+    <div class="flow-searchunify">
+        <img class="logo-flow" src="https://froyo2410poc.searchunify.ai/resources/Asset-Library/f82cd310219a5d14efdb91b19f33286f/Platform.png"/>
+    </div>
+
+    </div>
+    </div>
+        <footer class="footer">
+            <p>Contact us for more information!</p>
+        </footer>
+    </div>
+
+    <!-- Popup Containers -->
+    <div id="popup1" class="popup-container">
+        <div class="popup">
+            <span class="popup-close" onclick="closePopup('popup1')">&times;</span>
+            <h3>Select your content source</h3>
+            <div id="popup1-options">
+                <button class="button-css">Product Manuals</button>
+                <button class="button-css">Knowledge Base</button>
+                <button class="button-css">Documentaion</button>
+                <button class="button-css">Blogs</button>
+            </div>
+            <button class="add-option-button" onclick="toggleCustomInput('popup1')">Add Custom Option</button>
+            <div id="popup1-custom-input" class="custom-option-input">
+                <input type="text" id="popup1-custom-text" placeholder="Enter custom option">
+                <button onclick="addCustomOption('popup1')">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="popup-container">
+        <div class="popup">
+            <span class="popup-close" onclick="closePopup('popup2')">&times;</span>
+            <h3>Select your search client</h3>
+            <div id="popup2-options">
+                <button class="button-css">Salesforce</button>
+                <button class="button-css">Website</button>
+                <button class="button-css">Khoros</button>
+            </div>
+            <button class="add-option-button" onclick="toggleCustomInput('popup2')">Add Custom Option</button>
+            <div id="popup2-custom-input" class="custom-option-input">
+                <input type="text" id="popup2-custom-text" placeholder="Enter custom option">
+                <button onclick="addCustomOption('popup2')">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup3" class="popup-container">
+        <div class="popup">
+            <span class="popup-close" onclick="closePopup('popup3')">&times;</span>
+            <h3>Select your application</h3>
+            <div id="popup3-options">
+                <button class="button-css">Cognitive Saerch</button>
+                <button class="button-css">SUVA</button>
+                <button class="button-css">Agent Helper</button>
+                <button class="button-css">Community Helper</button>
+            </div>
+            <button class="add-option-button" onclick="toggleCustomInput('popup3')">Add Custom Option</button>
+            <div id="popup3-custom-input" class="custom-option-input">
+                <input type="text" id="popup3-custom-text" placeholder="Enter custom option">
+                <button onclick="addCustomOption('popup3')">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePopup(popupId) {
+            let popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'block';
+            }
+        }
+    
+        function closePopup(popupId) {
+            let popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'none';
+                clearCustomInput(popupId); // Clear input text when closing popup
+            }
+        }
+    
+        function toggleCustomInput(popupId) {
+            let customInput = document.getElementById(popupId + '-custom-input');
+            if (customInput) {
+                customInput.style.display = 'block';
+            }
+        }
+
+
+        function addCustomOption(popupId) {
+    let customInput = document.getElementById(popupId + '-custom-input');
+    let optionInput = document.getElementById(popupId + '-custom-text');
+    let optionText = optionInput.value.trim();
+    
+    if (optionText !== '') {
+        // Create a new button element with the specified text
+        let newButton = document.createElement('button');
+        newButton.textContent = optionText;
+        
+        // Add a class to the button
+        newButton.classList.add('button-css'); // Add your desired class name here
+        
+        // Create a span element for the close icon
+        let closeIcon = document.createElement('span');
+        closeIcon.textContent = '✖'; // You can use any character or HTML entity for the close icon
+        closeIcon.style.marginLeft = '10px'; // Adjust the spacing as needed
+        closeIcon.style.cursor = 'pointer'; // Change the cursor to a pointer for the close icon
+
+        // Add event listener to the button to handle the toggle action
+        newButton.onclick = function() {
+            toggleButtonState(this);
+        };
+        
+        // Add event listener to the close icon to remove the button
+        closeIcon.onclick = function(event) {
+            event.stopPropagation(); // Prevent the button's onclick event from firing
+            newButton.remove();
+        };
+        
+        // Append the close icon to the button
+        newButton.appendChild(closeIcon);
+        
+        // Append the new button to the popup options container
+        let popupOptions = document.getElementById(popupId + '-options');
+        if (popupOptions) {
+            popupOptions.appendChild(newButton);
+        }
+        
+        // Clear the input field and hide the custom input section
+        optionInput.value = '';
+        customInput.style.display = 'none';
+    }
+}
+
+
+    
+        function toggleButtonState(button) {
+            button.classList.toggle('selected');
+        }
+    
+        function clearCustomInput(popupId) {
+            let optionInput = document.getElementById(popupId + '-custom-text');
+            if (optionInput) {
+                optionInput.value = '';
+            }
+        }
+    </script>
+    
+    
+    
+</body>
+</html>
