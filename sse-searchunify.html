@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Toggle Example</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+    <style>
+
+            @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+        html{
+        width: 100%;
+        height: 100%;
+        }       
+        .tree-searchunify{
+        /* background: white; */
+        background: #0e1427;
+        }
+        .svgSU{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        }
+        .main-container{display: flex;height: 100vh;}
+        #done ,#doneSC , #doneAPP{
+            padding: 12px 25px 12px 25px;
+    border-radius: 1;
+    border-radius: 5px;
+    border: none;
+    background: #172b4d;
+    color: white;
+    font-family: monospace;}
+    #done:hover , #doneSC:hover , #doneAPP:hover{
+        background: white;
+    color: #172b4d;
+    }
+        
+        .button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 13px;
+
+        }
+        .container{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f6ff;
+        }
+        .tree-searchunify{
+            width: 50%;
+            display: none;
+        }
+        .button-toggle, .toggle-SC, .add-toggle-SC, .toggle-APP{
+        height: fit-content;
+        padding: 17px 40px 17px 40px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(90deg, #f80 0, #ffb300 100%);
+        color: white;
+        font-family: monospace;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        transition: all 0.5s;
+        cursor: pointer;
+        }
+
+        .checkboxSUCS , .checkboxSUSC, .checkboxSUAPP{
+            margin: 10px 0;
+            background: linear-gradient(90deg, #f80 0, #ffb300 100%);
+            margin: 10px 0;
+    background: linear-gradient(90deg, #f80 0, #ffb300 100%);
+    padding: 20px;
+    width: 60%;
+    height: fit-content;
+}
+.checkboxes label{
+    display: flex;
+    gap: 53px;
+    font-size: 19px;
+    margin-top: 10px;
+    font-family: monospace;
+    background: white;
+    padding: 10px 15px 10px 26px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    color: #172b4d;
+}
+.checkboxCS{
+    width: 15px;
+}
+        
+
+        .inner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .checkboxes {
+            display: flex;
+            flex-direction: column;
+            width: 89%;
+        }
+
+        .display {
+            margin-top: 10px;
+        }
+        .left-section-addition-class{
+            display: block !important;
+        }
+        .left-main-container{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f6ff;
+        }
+    
+
+        #startButton{
+        padding: 17px 40px 17px 40px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(90deg, #f80 0, #ffb300 100%);
+        color: white;
+        font-family: monospace;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        transition: all 0.5s;
+        cursor: pointer;
+        }
+
+        #startButton span{
+            cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        }
+
+        #startButton span:after {
+        content: '\00bb';
+            position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+#startButton:hover span {
+        padding-right: 25px;
+}
+#startButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.img-platform{
+    width: 80%;
+    height: 90vh;
+}
+.display-none{
+    display: none;
+}
+.circleCS{
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    overflow: visible;
+    right: 14vw;
+    top: 71vh;
+        }
+ .circleSC{
+    position: absolute;
+    right: 15vw;
+    top: 50vh;
+   
+ }    
+ .block{
+    width: fit-content;
+    margin-top: 7px;
+    font-weight: bold;
+    background: #f80;
+    color: #172b4d;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: monospace;
+ }   
+.circle-element {   
+    position: absolute;
+    text-align: center;
+    transform-origin: center;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #172b4d;
+    font-family: monospace;
+    font-weight: bold;
+    background: #f80;
+    padding: 5px;
+    border-radius: 10px;
+ }
+
+ .container-add-css{
+    display: none !important;
+ }
+ .svg-custom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .width-custom-svg{
+    width: 60%;
+ }
+ .width-custom-tree{
+    width: 100%;
+ }
+ .cs-circle-custom{
+    right: 38vw !important;
+    margin-right: none !important;
+ }
+ .sc-circle-custom{
+    right: 38vw !important;
+ }
+
+
+ .circleAPP {
+    position: absolute;
+    width: 800px;
+    height: 200px;
+    overflow: visible;
+    right: 24vw;
+    top: 10vh;
+        }
+        .circle-element-App {
+            position: absolute;
+    text-align: center;
+    transform-origin: center;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #172b4d;
+    font-family: monospace;
+    font-weight: bold;
+    background: #f80;
+    padding: 5px;
+    border-radius: 10px;
+        }
+    .informationSaerchUnify{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0e1427;
+    }    
+
+
+       
+    </style>
+</head>
+<body>
+    <script>
+        
+        var selectedData, checkboxesCS, selectedTextDiv, selectedTextDivSC, checkboxesSC, checkboxesAPP, selectedTextDivAPP ,selectedTextArrayCS , selectedTextArraySC , selectedTextArrayAPP = '';
+
+        const array1 = ["Product Manuals", "Knowledge Base", "Intranet", "Blogs", "Documentation"];
+        const array2 = ["Agent Helper", "Community Helper", "Escalation Predictor", "KCS Enabler", "Intelligent Search", "Intelligent Chatbot"];
+        const array3 = ["Salesforce", "Website", "Khoros", "Zendesk"];
+
+        function start() {
+    const containerSection = document.getElementById("checkbox-container");
+    const SCselectBtn = document.getElementsByClassName('button-toggle')[0]
+    const leftContainer = document.getElementById("left-container");
+    const leftContainerBtn = document.getElementsByClassName('left-main-container')[0]; // Access the first element
+    const flowSearchunify = document.getElementsByClassName('tree-searchunify')[0]
+    const frontPageIcon = document.getElementsByClassName('informationSaerchUnify')[0]
+    frontPageIcon.classList.add('container-add-css')
+    flowSearchunify.classList.add('svg-custom')
+    containerSection.style.display = "flex";
+        leftContainerBtn.classList.add('display-none');
+
+    SCselectBtn.classList.add('animate__animated','animate__backInDown');
+}
+        function displaycheckboxCS() {
+            const checkboxContainerCS = document.getElementById('checkboxContainer');
+            const checkboxAnimation = document.getElementsByClassName('checkboxSUCS')[0];
+            console.log(checkboxAnimation,"animation")
+            checkboxAnimation.classList.add('animate__animated','animate__backInDown');
+
+            checkboxContainerCS.innerHTML = '';  // Clear any existing checkboxes
+            array1.forEach(item => {
+                const labelCS = document.createElement('label');
+                const checkboxCS = document.createElement('input');
+                checkboxCS.type = 'checkbox';
+                checkboxCS.className = 'checkboxCS';
+                checkboxCS.value = item;
+                labelCS.appendChild(checkboxCS);
+                labelCS.appendChild(document.createTextNode(' ' + item));
+                checkboxContainerCS.appendChild(labelCS);
+            });
+
+            checkboxesCS = document.querySelectorAll('.checkboxCS');
+            checkboxesCS.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSelectedText);
+            });
+
+            const selectCS = document.getElementById("checkbox-display-cs");
+            const toggleButton = document.getElementById("button-toggle");
+
+            selectCS.style.display = 'block';
+            toggleButton.style.display = "none";
+        }
+
+        function displaycheckboxSC() {
+            const checkboxContainerSC = document.getElementById('checkboxContainerSC');
+            const checkboxAnimationSC = document.getElementsByClassName('checkboxSUSC')[0];
+            checkboxAnimationSC.classList.add('animate__animated','animate__backInDown');
+            checkboxContainerSC.innerHTML = '';  // Clear any existing checkboxes
+            array3.forEach(item => {
+                const labelSC = document.createElement('label');
+                const checkboxSC = document.createElement('input');
+                checkboxSC.type = 'checkbox';
+                checkboxSC.className = 'checkboxSC';
+                checkboxSC.value = item;
+                labelSC.appendChild(checkboxSC);
+                labelSC.appendChild(document.createTextNode(' ' + item));
+                checkboxContainerSC.appendChild(labelSC);
+            });
+
+            checkboxesSC = document.querySelectorAll('.checkboxSC');
+            checkboxesSC.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSelectedTextSC);
+            });
+
+            const selectSC = document.getElementById("checkbox-display-sc");
+            const toggleButtonSC = document.getElementById("toggleButton-searchclient");
+
+            selectSC.style.display = 'block';
+            toggleButtonSC.style.display = "none";
+        }
+
+        function displaycheckboxAPP() {
+            const checkboxContainerAPP = document.getElementById('checkboxContainerAPP');
+            const checkboxAnimationAPP = document.getElementsByClassName('checkboxSUAPP')[0];
+            checkboxAnimationAPP.classList.add('animate__animated','animate__backInDown');
+            checkboxContainerAPP.innerHTML = '';  // Clear any existing checkboxes
+            array2.forEach(item => {
+                const labelAPP = document.createElement('label');
+                const checkboxAPP = document.createElement('input');
+                checkboxAPP.type = 'checkbox';
+                checkboxAPP.className = 'checkboxAPP';
+                checkboxAPP.value = item;
+                labelAPP.appendChild(checkboxAPP);
+                labelAPP.appendChild(document.createTextNode(' ' + item));
+                checkboxContainerAPP.appendChild(labelAPP);
+            });
+
+            checkboxesAPP = document.querySelectorAll('.checkboxAPP');
+            checkboxesAPP.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSelectedTextAPP);
+            });
+
+            const selectAPP = document.getElementById("checkbox-display-app");
+            const toggleButtonAPP = document.getElementById("toggleButton-App");
+
+            selectAPP.style.display = 'block';
+            toggleButtonAPP.style.display = "none";
+        }
+
+        function updateSelectedText() {
+            selectedTextDiv = document.getElementById('showselectedCS');
+            selectedTextArrayCS = Array.from(checkboxesCS)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+                console.log(selectedTextArrayCS,"arrayCS")
+            // selectedTextDiv.innerHTML = selectedTextArrayCS.join(', ');
+            // selectedData = selectedTextDiv.innerHTML;
+        }
+
+        function updateSelectedTextSC() {
+            selectedTextDivSC = document.getElementById('selectedTextSC');
+            selectedTextArraySC = Array.from(checkboxesSC)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+            // selectedTextDivSC.innerHTML = selectedTextArraySC.join(', ');
+            // selectedData = selectedTextDivSC.innerHTML;
+        }
+
+        function updateSelectedTextAPP() {
+            selectedTextDivAPP = document.getElementById('selectedTextAPP');
+            selectedTextArrayAPP = Array.from(checkboxesAPP)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+            // selectedTextDivAPP.innerHTML = selectedTextArrayAPP.join(', ');
+            // selectedData = selectedTextDivAPP.innerHTML;
+        }
+
+        function validateCheckboxes(checkboxes) {
+            return Array.from(checkboxes).some(checkbox => checkbox.checked);
+        }
+
+        function doneCs() {
+            if (!validateCheckboxes(checkboxesCS)) {
+                alert('Please select at least one content source.');
+                return;
+            }
+
+            const selectCS = document.getElementById("checkbox-display-cs");
+            const toggleButtonSC = document.getElementById("toggleButton-searchclient");
+            const SCbuttonAnimation = document.getElementsByClassName('toggle-SC')[0];
+            SCbuttonAnimation.classList.add('animate__animated','animate__backInDown')
+
+            // const showTextCS = document.getElementById('selectedText').innerHTML;
+            const csdata = document.getElementById('showselectedCS');
+
+            selectCS.style.display = 'none';
+            toggleButtonSC.style.display = "block";
+            // csdata.innerHTML = showTextCS;
+            updateSelectedText(selectedTextArrayCS)
+            const arrayCS = selectedTextArrayCS;
+            const container = document.getElementById('showselectedCS');
+            const horizontalRadius = container.clientWidth / 2; 
+        const verticalRadius = container.clientHeight / 2; 
+        const angleStep = (2 * Math.PI) / arrayCS.length; 
+
+        // Create elements and append to container
+        arrayCS.forEach((element) => {
+            const div = document.createElement('div');
+            div.classList.add('circle-element');
+            div.innerHTML = element;
+            container.appendChild(div);
+        });
+
+        const animateElements = () => {
+            const time = new Date().getTime() / 5000; // Get current time in seconds
+            arrayCS.forEach((element, index) => {
+                const angle = index * angleStep - time; // Subtract time for counterclockwise rotation
+                const x = horizontalRadius + horizontalRadius * Math.cos(angle); // Calculate x position
+                const y = verticalRadius + verticalRadius * Math.sin(angle); // Calculate y position
+
+                const div = container.children[index];
+                div.style.left = `${x - 15}px`; // Adjust for element width (center element horizontally)
+                div.style.top = `${y - 15}px`; // Adjust for element height (center element vertically)
+            });
+        };
+
+        setInterval(animateElements, 16); // Update positions every 16ms (~60fps)
+        
+
+        //     const horizontalRadius = container.clientWidth / 2; 
+        // const verticalRadius = container.clientHeight / 2; 
+        // const angleStep = Math.PI / (arrayCS.length - 1); 
+
+        // arrayCS.forEach((element, index) => {
+        //     const angle = Math.PI + index * angleStep; 
+        //     const x = horizontalRadius + horizontalRadius * Math.cos(angle); 
+        //     const y = verticalRadius + verticalRadius * Math.sin(angle); 
+
+        //     const mirroredY = container.clientHeight - y; 
+
+        //     const div = document.createElement('div');
+        //     div.classList.add('circle-element','animate__animated','animate__zoomIn');
+        //     div.style.left = `${x - 15}px`; 
+        //     div.style.top = `${mirroredY - 15}px`; 
+
+        //     div.innerHTML = element;
+        //     container.appendChild(div);
+        // });
+
+
+
+        }
+
+
+function doneSc() {
+    if (!validateCheckboxes(checkboxesSC)) {
+        alert('Please select at least one search client.');
+        return;
+    }
+
+    const selectSC = document.getElementById("checkbox-display-sc");
+    const toggleButtonAPP = document.getElementById("toggleButton-App");
+    const APPbuttonAnimation = document.getElementsByClassName('toggle-APP')[0];
+    APPbuttonAnimation.classList.add('animate__animated', 'animate__backInDown');
+
+    updateSelectedTextSC(selectedTextArraySC); // Assuming this function is defined and updates selectedTextArraySC
+
+    const containerSC = document.getElementById('showselectedSC');
+    containerSC.innerHTML = ''; // Clear existing content
+
+    selectedTextArraySC.forEach(function(element) {
+        var block = document.createElement('div');
+        block.classList.add('block','animate__animated','animate__zoomIn')
+        block.textContent = element;
+        containerSC.appendChild(block);
+    });
+
+    selectSC.style.display = 'none';
+    toggleButtonAPP.style.display = "block";
+}
+
+
+        function doneApp() {
+            if (!validateCheckboxes(checkboxesAPP)) {
+                alert('Please select at least one app.');
+                return;
+            }
+
+            const HideAppcontainer = document.getElementById("checkbox-display-app")
+            // const showTextAPP = document.getElementById('selectedTextAPP').innerHTML;
+            const Appanimation = document.getElementsByClassName('checkboxSUAPP')[0];
+            Appanimation.classList.remove('animate__animated','animate__backInDown');
+            Appanimation.classList.add('animate__animated','animate__backOutDown')
+            const appdata = document.getElementById('showselectedAPP');
+            HideAppcontainer.style.display = 'none'
+            // appdata.innerHTML = showTextAPP;
+
+
+            const Container = document.getElementsByClassName('container')[0];
+            console.log(Container)
+            const SVGSU = document.getElementsByClassName('svgSU')[0];
+            console.log(SVGSU)
+            const TreeSearchunify = document.getElementsByClassName('tree-searchunify')[0]
+            const CircleCS = document.getElementsByClassName('circleCS')[0]
+            const circleSC = document.getElementsByClassName('circleSC')[0]
+
+
+            Container.classList.add('container-add-css');
+            SVGSU.classList.add('svg-custom','width-custom-svg')
+            TreeSearchunify.classList.add('svg-custom','width-custom-tree')
+            CircleCS.classList.add('cs-circle-custom')
+            circleSC.classList.add('sc-circle-custom')
+
+            updateSelectedTextAPP(selectedTextArrayAPP)
+            const arrayAPP = selectedTextArrayAPP
+
+            const containerAPP = document.getElementById('showselectedAPP');
+            const horizontalRadius = containerAPP.clientWidth / 2; 
+        const verticalRadius = containerAPP.clientHeight / 2; 
+        const angleStep = (2 * Math.PI) / arrayAPP.length; 
+        arrayAPP.forEach((element) => {
+            const div = document.createElement('div');
+            div.classList.add('circle-element');
+            div.innerHTML = element;
+            containerAPP.appendChild(div);
+        });
+
+        const animateElements = () => {
+            const time = new Date().getTime() / 5000; 
+            arrayAPP.forEach((element, index) => {
+                const angle = index * angleStep + time; 
+                const x = horizontalRadius + horizontalRadius * Math.cos(angle); 
+                const y = verticalRadius + verticalRadius * Math.sin(angle); 
+
+                const div = containerAPP.children[index];
+                div.style.left = `${x - 15}px`;
+                div.style.top = `${y - 15}px`; 
+            });
+        };
+
+        setInterval(animateElements, 16); // Update positions every 16ms (~60fps)
+        // const horizontalRadius = containerAPP.clientWidth / 2; 
+        // const verticalRadius = containerAPP.clientHeight / 2; 
+        // const angleStep = Math.PI / (arrayAPP.length - 1); 
+
+        // arrayAPP.forEach((element, index) => {
+        //     const angle = Math.PI + index * angleStep; 
+        //     const x = horizontalRadius + horizontalRadius * Math.cos(angle); 
+        //     const y = verticalRadius + verticalRadius * Math.sin(angle); 
+
+        //     const div = document.createElement('div');
+        //     div.classList.add('circle-element-App');
+        //     div.style.left = `${x - 15}px`; 
+        //     div.style.top = `${y - 15}px`; 
+
+        //     div.innerHTML = element;
+        //     containerAPP.appendChild(div);
+        // });
+        }
+
+        
+
+    </script>
+
+    <div class="main-container">
+        <div class="left-main-container" id="left-conatiner">
+            <div class="start-buuton">
+                <button id="startButton" class="start-button" onclick="start()"><span>Let's Start</span></button>
+            </div>
+        </div>
+        <div class="circleCS" id = "showselectedCS"></div>
+        <div class="circleSC" id = "showselectedSC"></div>
+        <div class="circleAPP" id = "showselectedAPP"></div>
+        <div class="container" id="checkbox-container" style="display: none;">
+            <div class="button-toggle" id="button-toggle">
+                <div id="toggleButton" class="select-CS" onclick="displaycheckboxCS()">Select your content source</div>
+            </div>
+            <div id="checkbox-display-cs" class="checkboxSUCS" style="display: none;">
+                <div class="inner-container">
+                    <div class="checkboxes" id="checkboxContainer"></div>
+                    <div class="display">
+                        <!-- <h3>Selected CS:</h3> -->
+                        <!-- <div id="selectedText"></div> -->
+                    </div>
+                </div>
+                <div class="button-container">
+                <button id="done" onclick="doneCs()">Done</button>
+            </div>
+            </div>
+
+
+            
+    
+            
+    
+            <div id="toggleButton-searchclient" class="toggle-SC" style="display: none;" onclick="displaycheckboxSC()">Select your search client</div>
+            <div id="checkbox-display-sc" class="checkboxSUSC" style="display: none;">
+                <div class="inner-container">
+                    <div class="checkboxes" id="checkboxContainerSC"></div>
+                    <div class="display">
+                        <!-- <h3>Selected SC:</h3> -->
+                        <!-- <div id="selectedTextSC"></div> -->
+                    </div>
+                </div>
+                <div class="button-container">
+                <button id="doneSC" onclick="doneSc()">Done</button>
+                </div>
+            </div>
+    
+            <!-- <div id = "showselectedSC"></div> -->
+    
+            <div id="toggleButton-App" class="toggle-APP" style="display: none;" onclick="displaycheckboxAPP()">Select your App</div>
+            <div id="checkbox-display-app" class="checkboxSUAPP" style="display: none;">
+                <div class="inner-container">
+                    <div class="checkboxes" id="checkboxContainerAPP"></div>
+                    <div class="display">
+                        <!-- <h3>Selected App:</h3> -->
+                        <!-- <div id="selectedTextAPP"></div> -->
+                    </div>
+                </div>
+                <div class="button-container">
+                <button id="doneAPP" onclick="doneApp()">Done</button>
+                </div>
+            </div>
+    
+        </div>
+        <div class="tree-searchunify">
+           <div class="svgSU">
+            <img src="https://froyo2410poc.searchunify.ai/resources/Asset-Library/f82cd310219a5d14efdb91b19f33286f/Platform.png" class="img-platform"/>
+           </div>
+
+        </div>
+        <div class="informationSaerchUnify" id="informationSU">
+            <img src="https://www.searchunify.com/wp-content/themes/searchunify/assets/img/consulting-banner-img.svg"/>
+        </div>
+
+    
+</div>
+</body>
+</html>
